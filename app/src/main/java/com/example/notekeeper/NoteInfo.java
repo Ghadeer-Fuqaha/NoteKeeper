@@ -3,7 +3,8 @@ package com.example.notekeeper;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public final class NoteInfo {
+public final class NoteInfo implements Parcelable {
+
     private CourseInfo mCourse;
     private String mTitle;
     private String mText;
@@ -12,6 +13,12 @@ public final class NoteInfo {
         mCourse = course;
         mTitle = title;
         mText = text;
+    }
+
+    private NoteInfo(Parcel parcel) {
+        mCourse = parcel.readParcelable(CourseInfo.class.getClassLoader());
+        mTitle = parcel.readString();
+        mText = parcel.readString();
     }
 
     public CourseInfo getCourse() {
@@ -62,4 +69,35 @@ public final class NoteInfo {
         return getCompareKey();
     }
 
+
+    @Override
+    //we use the describeContents method when we have special needs
+    // but here we don't have special needs so we return 0
+    public int describeContents() {
+        return 0;
+    }
+
+    //writeToParcel is responsible to write member information for the type instance
+    // into the parcel and receives the parcel as a parameter
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        parcel.writeParcelable(mCourse, 0);
+        parcel.writeString(mTitle);
+        parcel.writeString(mText);
+
+    }
+
+    public static final Parcelable.Creator<NoteInfo> CREATOR =
+            new Parcelable.Creator<NoteInfo>() {
+                @Override
+                public NoteInfo createFromParcel(Parcel parcel) {
+                    return new NoteInfo(parcel);
+                }
+
+                @Override
+                public NoteInfo[] newArray(int size) {
+                    return new NoteInfo[size];
+                }
+            };
 }
