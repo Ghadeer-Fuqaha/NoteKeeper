@@ -11,26 +11,41 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.List;
 
 public class NoteActivity extends AppCompatActivity {
 
-    //Activity: is a single,focused thing that the user can do. 
+    //Activity: is a single,focused thing that the user can do.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //load up the layout resource called activity_note
+        setContentView(R.layout.activity_note);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Spinner spinnerCourses = findViewById(R.id.spinner_courses);
+
+        //Populating the spinner
+        //Spinner have two layouts:
+        //1 --> one layout used to format the current selection
+        //1 --> another layout used to format each of the available selections
+        //Spinner Adapter: are responsible for doing the work of moving the data over
+        // and each of these layouts
+
+        //Create List contain Courses names
+        List<CourseInfo> courses = DataManager.getInstance().getCourses();
+
+        //then Create adapter to associate list with spinner
+        ArrayAdapter<CourseInfo> adpaterCourses =
+                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
+
+        adpaterCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCourses.setAdapter(adpaterCourses);
     }
 
     @Override
