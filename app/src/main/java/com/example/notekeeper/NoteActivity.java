@@ -23,6 +23,7 @@ public class NoteActivity extends AppCompatActivity {
     private EditText mTextNoteTitle;
     private EditText mTextNoteText;
 
+    //Switch to the main Account
     //Activity: is a single,focused thing that the user can do.
 
     @Override
