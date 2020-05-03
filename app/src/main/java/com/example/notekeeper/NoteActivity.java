@@ -23,6 +23,7 @@ public class NoteActivity extends AppCompatActivity {
     private EditText mTextNoteTitle;
     private EditText mTextNoteText;
     private int mNotePosition;
+    private boolean mIsCancelling;
 
     //Switch to the main Account
     //Switch to the default Account
@@ -66,6 +67,10 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if(mIsCancelling){
+            if(mIsNewNote)
+            DataManager.getInstance().removeNote(mNotePosition);
+        }
         saveNote();
     }
 
@@ -121,6 +126,10 @@ public class NoteActivity extends AppCompatActivity {
         if (id == R.id.action_send_mail) {
             sendEmail();
             return true;
+        }else if(id == R.id.action_cancel){
+            mIsCancelling = true;
+            //Back to previous activity
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
