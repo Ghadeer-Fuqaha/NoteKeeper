@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import java.util.List;
 
 public class NoteActivity extends AppCompatActivity {
+    public final static String NOTE_INFO = "com.example.notekeeper.NOTE_INFO";
 
     //Activity: is a single,focused thing that the user can do.
 
