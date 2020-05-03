@@ -24,6 +24,7 @@ public class NoteActivity extends AppCompatActivity {
     private EditText mTextNoteText;
 
     //Switch to the main Account
+    //Switch to the default Account
     //Activity: is a single,focused thing that the user can do.
 
     @Override
