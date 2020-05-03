@@ -14,6 +14,8 @@ import android.view.MenuItem;
 
 public class NoteActivity extends AppCompatActivity {
 
+    //Activity: is a single,focused thing that the user can do. 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
