@@ -47,6 +47,11 @@ public class NoteActivity extends AppCompatActivity {
 
         mViewModel = viewModelProvider.get(NoteActivityViewModel.class);
 
+        if(mViewModel.mIsNewlyCreated && savedInstanceState != null)
+            mViewModel.restoreState(savedInstanceState);
+
+        mViewModel.mIsNewlyCreated = false;
+
         mSpinnerCourses = findViewById(R.id.spinner_courses);
 
         //Populating the spinner
@@ -98,6 +103,14 @@ public class NoteActivity extends AppCompatActivity {
         }else{
 
             saveNote();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(outState !=null){
+            mViewModel.saveState(outState);
         }
     }
 
