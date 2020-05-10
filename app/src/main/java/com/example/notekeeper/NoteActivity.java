@@ -43,6 +43,7 @@ public class NoteActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //View Model maintains state when activity destroyed due to configurations changes.
+        //e.g: the user rotate the device from portrait to landscape
         ViewModelProvider viewModelProvider = new ViewModelProvider(getViewModelStore(),
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()));
 
