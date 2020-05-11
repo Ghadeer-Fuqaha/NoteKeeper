@@ -8,6 +8,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +20,7 @@ import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity {
 
-    private ArrayAdapter<NoteInfo> mAdapterNotes;
+   // private ArrayAdapter<NoteInfo> mAdapterNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +44,12 @@ public class NoteListActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        mAdapterNotes.notifyDataSetChanged();
+        //mAdapterNotes.notifyDataSetChanged();
     }
 
     private void initializeDisplayContent() {
 
-       final ListView listNotes = findViewById(R.id.list_note);
+     /*  final ListView listNotes = findViewById(R.id.list_note);
 
         List<NoteInfo> notes = DataManager.getInstance().getNotes();
 
@@ -64,7 +66,14 @@ public class NoteListActivity extends AppCompatActivity {
                 intent.putExtra(NoteActivity.NOTE_POSITION, position);
                 startActivity(intent);
             }
-        });
+        });*/
+
+     final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_notes);
+
+     //create instance of layoutManager: Linear Layout Manager
+     final LinearLayoutManager notesLayoutManager = new LinearLayoutManager(this);
+
+
     }
 
 }

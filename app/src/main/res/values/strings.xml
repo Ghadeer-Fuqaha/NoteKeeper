@@ -3,4 +3,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_note_list">NoteListActivity</string>
     <string name="title_activity_note">Edit Note</string>
+    <string name="TextCourse">Text Course</string>
+    <string name="TextTitle">Text Title</string>
+    <string name="Course">TextView</string>
+    <string name="TitleNote">TextView</string>
 </resources>
