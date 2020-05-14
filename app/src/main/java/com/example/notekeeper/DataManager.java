@@ -19,11 +19,11 @@ public class DataManager {
     }
 
     public String getCurrentUserName() {
-        return "Jim Wilson";
+        return "Ghadeer Fuqaha";
     }
 
     public String getCurrentUserEmail() {
-        return "jimw@jwhh.com";
+        return "ghadeer.alfuqaha@gmail.com";
     }
 
     public List<NoteInfo> getNotes() {

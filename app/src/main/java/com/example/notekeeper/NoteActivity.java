@@ -168,6 +168,15 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void moveNext() {
+
+        //Before we move to the next Note we should grantee the current Note was saved
+        saveNote();
+        //Increment Note position to the next position
+        ++mNotePosition;
+        //get that Note with the new position from DataManager
+        mNote = DataManager.getInstance().getNotes().get(mNotePosition);
+        saveOriginalNoteValues();
+        displayNote(mSpinnerCourses, mTextNoteTitle, mTextNoteText);
     }
 
     private void sendEmail() {
