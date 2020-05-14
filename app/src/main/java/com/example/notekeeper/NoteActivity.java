@@ -187,6 +187,9 @@ public class NoteActivity extends AppCompatActivity {
         mNote = DataManager.getInstance().getNotes().get(mNotePosition);
         saveOriginalNoteValues();
         displayNote(mSpinnerCourses, mTextNoteTitle, mTextNoteText);
+        //here we called invalidateOptionMenue() method to disable Next Note menu Item
+        //and the reason for this call, because the onPrepareOptionMenu() called just once before
+        //menu Displayed
         invalidateOptionsMenu();
     }
 
